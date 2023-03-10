@@ -31,7 +31,7 @@ jobs:
           wget https://parallel-netcdf.github.io/Release/pnetcdf-${PNETCDF_VERSION}.tar.gz
           tar -xzf pnetcdf-${PNETCDF_VERSION}.tar.gz
           pushd pnetcdf-${PNETCDF_VERSION}
-          ./configure --prefix $NETCDF_DIR --enable-shared --disable-fortran --disable-cxx
+          ./configure --prefix $NETCDF_DIR --enable-shared --disable-cxx
           make -j 2
           make install
         shell: /bin/bash {0}      
