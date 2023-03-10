@@ -5,10 +5,9 @@
 ##------------
 ##
 
-module unload netcdf || echo no module command
+# module unload netcdf || echo no module command
 
 mach=$( echo $HOSTNAME | cut -f 1 -d . -d 0 )
-
 echo $mach
 
 if [ $mach = 'constance' ]; then
