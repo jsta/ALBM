@@ -25,3 +25,8 @@ jobs:
           sudo apt-get upgrade
           sudo apt-get -y install openmpi-bin
         shell: /bin/bash {0}
+
+      - name: configure        
+        run: |
+          cd libraries/parallel-netcdf-1.4.0 && ./configure --prefix=${PWD}
+        shell: /bin/bash {0}
