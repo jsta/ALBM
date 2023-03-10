@@ -9,6 +9,7 @@ jobs:
     env:
       PNETCDF_VERSION: 1.12.1
       NETCDF_DIR: ${{ github.workspace }}/..
+      NETCDF_HOME: ${{ github.workspace }}/..
 
     name: ${{ matrix.config.os }}
 
@@ -42,5 +43,5 @@ jobs:
 
       - name: make
         run: |
-          cd src && make
+          cd src && ./make.sh
         shell: /bin/bash {0}
