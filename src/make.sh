@@ -24,6 +24,7 @@ elif [ $mach = 'compy' ]; then
 
 else
    
+   export NETCDF_HOME=/home/runner/work/ALBM/ALBM/../lib
    export LD_LIBRARY_PATH=$NETCDF_HOME/lib:$LD_LIBRARY_PATH
 
 fi

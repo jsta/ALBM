@@ -39,6 +39,7 @@ jobs:
       - name: compile ALBM
         run: |
           ls /home/runner/work/ALBM/ALBM/../include
+          ls /home/runner/work/ALBM/ALBM/../lib
           cd src && ./make.sh
         shell: /bin/bash {0}
 
