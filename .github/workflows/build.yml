@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install system dependencies
+      - name: Install pnetcdf
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
@@ -34,14 +34,14 @@ jobs:
           ./configure --prefix $NETCDF_DIR --enable-shared --disable-fortran --disable-cxx
           make -j 2
           make install
-        shell: /bin/bash {0}
+        shell: /bin/bash {0}      
 
-      # - name: pnetcdf
-      #   run: |
-      #     cd libraries/parallel-netcdf-1.4.0 && ./configure && make
-      #   shell: /bin/bash {0}
-
-      - name: make
+      - name: compile ALBM
         run: |
           cd src && ./make.sh
         shell: /bin/bash {0}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ALBM.exe
+          path: src/ALBM.exe
