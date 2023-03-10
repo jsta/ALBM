@@ -6,6 +6,9 @@ name: build
 jobs:
   build:
     runs-on: ${{ matrix.config.os }}
+    env:
+      PNETCDF_VERSION: 1.12.1
+      NETCDF_DIR: ${{ github.workspace }}/..
 
     name: ${{ matrix.config.os }}
 
@@ -22,8 +25,14 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get upgrade
-          sudo apt-get -y install openmpi-bin libpnetcdf-dev libnetcdf-pnetcdf-dev
+          sudo apt-get install mpich libmpich-dev libhdf5-mpich-dev libcurl4-openssl-dev bzip2 libsnappy-dev libblosc-dev libzstd-dev
+          echo "Download and build PnetCDF version ${PNETCDF_VERSION}"
+          wget https://parallel-netcdf.github.io/Release/pnetcdf-${PNETCDF_VERSION}.tar.gz
+          tar -xzf pnetcdf-${PNETCDF_VERSION}.tar.gz
+          pushd pnetcdf-${PNETCDF_VERSION}
+          ./configure --prefix $NETCDF_DIR --enable-shared --disable-fortran --disable-cxx
+          make -j 2
+          make install
         shell: /bin/bash {0}
 
       # - name: pnetcdf
