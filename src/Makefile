@@ -20,7 +20,7 @@ endif
 ifdef $(NETCDF_HOME)
 FFLAGS += -I$(NETCDF_HOME)/include
 endif
-FFLAGS += -I/usr/include
+FFLAGS += -I/usr/include -I/home/runner/work/ALBM/ALBM/../include
 #FFLAGS += -I$(NETCDF_HOME)/include $(LAPACK_INCLUDE_F95) -I/usr/include
 LDFLAGS =
 LIBS = -lpnetcdf -L/usr/lib64
