@@ -16,10 +16,17 @@ endif
 ifeq ($(OPT), 1)
 FFLAGS += -fast
 endif
-FFLAGS += -I$(NETCDF_HOME)/include -I/usr/include
+
+ifdef $(NETCDF_HOME)
+FFLAGS += -I$(NETCDF_HOME)/include
+endif
+FFLAGS += -I/usr/include
 #FFLAGS += -I$(NETCDF_HOME)/include $(LAPACK_INCLUDE_F95) -I/usr/include
 LDFLAGS =
-LIBS = -L$(NETCDF_HOME)/lib -lpnetcdf -L/usr/lib64
+LIBS = -lpnetcdf -L/usr/lib64
+ifdef $(NETCDF_HOME)
+LIBS += -L$(NETCDF_HOME)/lib 
+endif
 #LIBS = -L$(NETCDF_HOME)/lib -lpnetcdf -L/usr/lib64 $(LINK_LAPACK95) -lblas -llapack
 
 f90comp = mpif90 $(FFLAGS) -c
