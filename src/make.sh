@@ -30,6 +30,8 @@ if [ -z "$arg" ]; then
       gmake OPT=0 -j8
    elif [ $mach = 'compy' ]; then
       gmake OPT=1 -j8
+   else   
+      gmake OPT=0 -j8
    fi
 elif [ $arg = 'trace' ]; then
    gmake TRACE=1 -j8
