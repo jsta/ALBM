@@ -29,7 +29,7 @@ LIBS += -L$(NETCDF_HOME)/lib
 endif
 #LIBS = -L$(NETCDF_HOME)/lib -lpnetcdf -L/usr/lib64 $(LINK_LAPACK95) -lblas -llapack
 
-f90comp = mpif90 $(FFLAGS) -c
+f90comp = mpif90 $(FFLAGS) -c -fno-range-check
 f90link = mpif90 $(LDFLAGS) -o
 # source file search variable VPATH = : : :
 # Makefile
