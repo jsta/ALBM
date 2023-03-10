@@ -26,9 +26,10 @@ jobs:
           sudo apt-get -y install openmpi-bin
         shell: /bin/bash {0}
 
-      - name: configure
+      - name: pnetcdf
         run: |
-          cd libraries/parallel-netcdf-1.4.0 && ./configure --prefix=${PWD}
+          cd libraries/parallel-netcdf-1.4.0 && ./configure
+          cd libraries/parallel-netcdf-1.4.0 && make
         shell: /bin/bash {0}
 
       - name: make
