@@ -22,6 +22,10 @@ elif [ $mach = 'compy' ]; then
    export LD_LIBRARY_PATH=$NETCDF_HOME/lib:$LD_LIBRARY_PATH
    module load intel/19.0.3 mvapich2/2.3.1
 
+else
+   
+   export LD_LIBRARY_PATH=$NETCDF_HOME/lib:$LD_LIBRARY_PATH
+
 fi
 
 arg=$( echo $1 | tr '[:upper:]' '[:lower:]' )
